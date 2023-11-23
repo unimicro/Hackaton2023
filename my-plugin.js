@@ -39,7 +39,15 @@ class MyPluginDetails extends HTMLElement {
   
 }
   
-  // register component
+
+const url = window.location.pathname;
+if (url.endsWith('/')) {
   customElements.define( 'my-plugin', MyPlugin );
+}else{
   customElements.define( 'my-plugin-details', MyPluginDetails );
+}
+
+  // register component
+  
+  
   
