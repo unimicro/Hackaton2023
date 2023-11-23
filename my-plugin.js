@@ -1,40 +1,41 @@
+const template = document.createElement("my-plugin");
+
+
+
 // web component
 class MyPlugin extends HTMLElement {
   
-    constructor() {
-      super();      
-    }
-   
-    // connect component
-    connectedCallback() {
-      this.textContent = `Hello World!`;
-    }
+  constructor() {
+    super();
+
   }
+
+  connectedCallback() {
+    this.h3 = "Hello World!";
+    this.render();
+  }
+
+  render() {
+    this.h3;
+  }
+
+}
 
   // web component
 class MyPluginDetails extends HTMLElement {
   
+  lastSegment = url.split('/').filter(Boolean).pop();
+
   constructor() {
     super();
-    this.id = 'World';
   }
   
-  // component attributes
-  static get observedAttributes() {
-    return ['id'];
-  }
-  
-  // attribute change
-  attributeChangedCallback(property, oldValue, newValue) {
-
-    if (oldValue === newValue) return;
-    this[ property ] = newValue;
-    
-  }
   
   // connect component
-  connectedCallback() {
-    this.textContent = `Hello ${ this.id }!`;
+  connectedCallback() {    
+    this.h3 = "Hello World!";
+    this.h2 = "ID: " + lastSegment;
+    
   }
   
 }
@@ -42,9 +43,41 @@ class MyPluginDetails extends HTMLElement {
 
 const url = window.location.pathname;
 if (url.endsWith('/')) {
+  template.innerHTML = `
+  <style>
+    .hello {
+      font-family: sans-serif;
+      background: #f4f6f7;
+      width: 250px;
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: 10px;
+    }
+
+  </style>
+  <div class="hello">            
+      <h3></h3>
+  </div>`;
   customElements.define( 'my-plugin', MyPlugin );
 }else{
-  customElements.define( 'my-plugin-details', MyPluginDetails );
+  template.innerHTML = `
+  <style>
+    .hello {
+      font-family: sans-serif;
+      background: #f4f6f7;
+      width: 250px;
+      display: grid;
+      grid-template-columns: 1fr;
+      margin-bottom: 10px;
+    }
+
+  </style>
+  <div class="hello">            
+      <h3></h3>
+      <h2></h2>
+  </div>`;
+  
+  customElements.define( 'my-plugin', MyPluginDetails );
 }
 
   // register component
