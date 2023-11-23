@@ -1,13 +1,10 @@
 const template = document.createElement("my-plugin");
 
-
-
 // web component
 class MyPlugin extends HTMLElement {
   
   constructor() {
     super();
-
   }
 
   connectedCallback() {
@@ -25,19 +22,15 @@ class MyPlugin extends HTMLElement {
 class MyPluginDetails extends HTMLElement {
   
   lastSegment = url.split('/').filter(Boolean).pop();
-
   constructor() {
     super();
   }
   
-  
   // connect component
   connectedCallback() {    
     this.h3 = "Hello World!";
-    this.h2 = "ID: " + lastSegment;
-    
-  }
-  
+    this.h2 = "ID: " + lastSegment;    
+  }  
 }
   
 
