@@ -1,0 +1,17 @@
+{
+    "Path": "/pet-world",
+    "Name": "My Pet World",
+    "Source": "my-plugin.js",
+    "Routes": [{
+            "Path": "/",
+            "Component": "my-plugin",
+            "Module": "Sales",
+            "Menu": "Pet list"
+        }, {
+            "Path": "/:id",
+            "Component": "my-plugin-details",
+            "Module": null,
+            "Menu": null
+        }
+    ]
+}
